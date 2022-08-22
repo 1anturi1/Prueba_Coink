@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="row" style="display: flex; justify-content:center;">
+
+
+    <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+            <h5 class="card-title"> Agrega aquí tu usuario</h5>
+            <form action="/add/" method="post" class="col s12">
+                <div class="row">
+                    <label for="Nombre">Nombre: </label>
+                    <input id="name" type="text" name="name" value="{{ current_name }}">
+                </div>
+                <div class="row">
+                    <label for="Cedula">Correo: </label>
+                    <input id="email" type="text" name="email" value="{{ current_name }}">
+                </div>
+
+                <div class="row">
+                    <label for="Direccion">Ciudad: </label>
+                    <input id="city" type="text" name="city" value="{{ current_name }}">
+                </div>
+                <br></br>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button type="submit" class="btn btn-outline-success">Agregar</button>
+                </div>
+            </form>
+        </div>
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags %}
+
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="position: fixed;   z-index: 100;    bottom: 0;     right: 0; ">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        {% endif %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="position: fixed;   z-index: 100;    bottom: 0;     right: 0; ">
+
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>   
+
+
+
+{% endblock %}
